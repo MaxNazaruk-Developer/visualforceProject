@@ -1,0 +1,22 @@
+<apex:page Controller="getContactsController">    
+    <apex:form>        
+    <apex:pageBlock title="Enter name for search"> 
+        <apex:pageBlockSection>                       
+            <apex:inputField value="{!contactSearch.FirstName}"/>            
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons location="bottom">
+            <apex:commandButton action="{!getContact}" value="Search"/>             
+        </apex:pageBlockButtons>
+    </apex:pageBlock>     
+        <apex:pageBlock title="Contacts List" id ="contacts_list">
+         <apex:pageBlockTable value="{!contacts}" var="listContact"> 
+           <apex:column value="{!listContact.FirstName}"/>
+           <apex:column value="{!listContact.LastName}"/>
+           <apex:column value="{!listContact.Email}"/>
+           <apex:column value="{!listContact.AccountId}"/>
+           <apex:column value="{!listContact.MobilePhone}"/>           
+           <apex:column value="{!listContact.CreatedDate}"/>           
+         </apex:pageBlockTable>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
