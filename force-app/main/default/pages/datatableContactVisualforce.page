@@ -1,12 +1,8 @@
 <apex:page Controller="getContactsController">    
     <apex:form>        
     <apex:pageBlock title="Enter name for search"> 
-        <apex:pageBlockSection>                       
-            <apex:inputField value="{!contactSearch.FirstName}"/>            
-        </apex:pageBlockSection>
-        <apex:pageBlockButtons location="bottom">
-            <apex:commandButton action="{!getContact}" value="Search"/>             
-        </apex:pageBlockButtons>
+        <apex:inputtext value="{!contactSearch}"/>
+        <apex:commandButton onclick="{!contacts}" value="Search"/>       
     </apex:pageBlock>     
         <apex:pageBlock title="Contacts List" id ="contacts_list">
          <apex:pageBlockTable value="{!contacts}" var="listContact"> 

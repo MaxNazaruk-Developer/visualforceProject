@@ -1,19 +1,9 @@
 public class getContactsController {
 
-    public static Contact contactSearch{get;}
-    public static List<Contact> contacts { get { return getContact();} } 
+    public static String contactSearch {get; set;}
+    public static List<Contact> contacts { get { return getContact();} }       
     
-    
-    /*public Contact getContactForSearch(){
-        if (contactSearch == null) {
-            contactSearch = new Contact();
-        }
-        return contactSearch;
-    }*/    
-    
-    public static List<Contact> getContact() {
-        System.debug('contactSearch', contactSearch);    
-        
+    public static List<Contact> getContact() {       
         if (contactSearch == null) {                    
             return [
                 SELECT FirstName, LastName, Email, MobilePhone, CreatedDate, AccountId
@@ -22,19 +12,15 @@ public class getContactsController {
                 LIMIT 50            
             ];
         } else {
-            String getSearchContact= '%' + contactSearch.LastName + '%';
-            System.debug('getSearchContact', getSearchContact);
+            String getSearchContact= '%' + contactSearch + '%';            
             return [
                 SELECT FirstName, LastName, Email, MobilePhone, CreatedDate, AccountId
                 FROM Contact
-                WHERE LastName LIKE :getSearchContact              
+                WHERE FirstName 
+                LIKE :getSearchContact              
                 ORDER BY CreatedDate DESC 
                 LIMIT 50            
             ];
-        }
+        }        
     }   
-    
-    /*public static void searchContact() {
-        
-    }*/
 }
